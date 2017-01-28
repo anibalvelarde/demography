@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demography.core", "demography.core\demography.core.csproj", "{B75CE65E-3F80-488B-A454-DE1B97822FBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demography.plugins", "demography.plugins\demography.plugins.csproj", "{08A64759-964D-45CE-A128-0E8D6F858056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demography.plugins.contracts", "demography.plugins.contracts\demography.plugins.contracts.csproj", "{B36C059A-886E-4C0B-B346-9C1E96AAE3AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demography.api.tests", "demography.api.tests\demography.api.tests.csproj", "{8D9E1C91-3E9E-4BB7-BE23-6715DE31514F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28597635-F551-4C28-B1F0-DD9F46628EF6}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demography.core.tests", "demography.core.tests\demography.core.tests.csproj", "{51A86E23-15B7-45FF-BACA-FEE4D7FB32B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demography.plugins.tests", "demography.plugins.tests\demography.plugins.tests.csproj", "{5A229362-CA76-4E62-A635-2EE6376E69A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demography.api", "demography.api\demography.api.csproj", "{2950006B-8025-4922-85E8-F3923C172669}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B75CE65E-3F80-488B-A454-DE1B97822FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B75CE65E-3F80-488B-A454-DE1B97822FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B75CE65E-3F80-488B-A454-DE1B97822FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B75CE65E-3F80-488B-A454-DE1B97822FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A64759-964D-45CE-A128-0E8D6F858056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A64759-964D-45CE-A128-0E8D6F858056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A64759-964D-45CE-A128-0E8D6F858056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A64759-964D-45CE-A128-0E8D6F858056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36C059A-886E-4C0B-B346-9C1E96AAE3AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36C059A-886E-4C0B-B346-9C1E96AAE3AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36C059A-886E-4C0B-B346-9C1E96AAE3AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36C059A-886E-4C0B-B346-9C1E96AAE3AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9E1C91-3E9E-4BB7-BE23-6715DE31514F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9E1C91-3E9E-4BB7-BE23-6715DE31514F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9E1C91-3E9E-4BB7-BE23-6715DE31514F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9E1C91-3E9E-4BB7-BE23-6715DE31514F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A86E23-15B7-45FF-BACA-FEE4D7FB32B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A86E23-15B7-45FF-BACA-FEE4D7FB32B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A86E23-15B7-45FF-BACA-FEE4D7FB32B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A86E23-15B7-45FF-BACA-FEE4D7FB32B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A229362-CA76-4E62-A635-2EE6376E69A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A229362-CA76-4E62-A635-2EE6376E69A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A229362-CA76-4E62-A635-2EE6376E69A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A229362-CA76-4E62-A635-2EE6376E69A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2950006B-8025-4922-85E8-F3923C172669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2950006B-8025-4922-85E8-F3923C172669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2950006B-8025-4922-85E8-F3923C172669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2950006B-8025-4922-85E8-F3923C172669}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
