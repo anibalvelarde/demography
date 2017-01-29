@@ -43,5 +43,36 @@ namespace demography.api.Models
         {
             return this.Pollsters;
         }
+
+        public Pollster GetPollster(Guid id)
+        {
+            return Pollsters.FirstOrDefault(p => p.Id.Equals(id));
+        }
+
+        public bool AddPollster(Pollster p)
+        {
+            try
+            {
+                Pollsters.Add(p);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool DeletePollster(Guid id)
+        {
+            try
+            {
+                var pToDelete = Pollsters.First(p => p.Id.Equals(id));
+                Pollsters.Remove(pToDelete);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }        }
     }
 }

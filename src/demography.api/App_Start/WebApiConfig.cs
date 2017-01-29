@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace demography.api
@@ -19,6 +20,9 @@ namespace demography.api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // media types
+            config.Formatters.Add(new JsonMediaTypeFormatter());
         }
     }
 }
