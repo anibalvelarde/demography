@@ -21,7 +21,7 @@ namespace demography.plugins.IocModules
             }
             else
             {
-                var hosts = new string[] { @"9q+DzOgCni7JVKL7WyaM5hK9+WP1T1KJKW9ItKxXOUg=@demography.redis.cache.windows.net?ssl=true" };
+                var hosts = new string[] { @"[xxx]=@demography.redis.cache.windows.net?ssl=true" };
                 builder.RegisterType<PooledRedisClientManager>()
                        .As<IRedisClientsManager>()
                        .WithParameter("readWriteHosts", hosts)
