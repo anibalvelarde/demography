@@ -8,8 +8,6 @@ namespace demography.api.Models
 {
     public class Pollster
     {
-        private PollsterDto p;
-
         public Pollster()
         {
             Id = Guid.NewGuid();

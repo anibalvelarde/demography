@@ -4,20 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace demography.plugins.Repositories.Pollsters
+namespace demography.plugins.Repositories.MockDataRepo
 {
-    public class PollsterMockData : IRepository<PollsterDto>
+    sealed class PollsterMockRepo : IRepository<PollsterDto>
     {
-        private static volatile PollsterMockData instance;
+        private static volatile PollsterMockRepo instance;
         private static object syncRoot = new Object();
         private readonly List<PollsterDto> _pollsters = new List<PollsterDto>();
 
-        public PollsterMockData()
+        public PollsterMockRepo()
         {
             _pollsters = new List<PollsterDto>() { new PollsterDto() { Id = Guid.NewGuid(), Name = "Anibal" }, new PollsterDto() { Id = Guid.NewGuid(), Name = "Lucas" } };
         }
 
-        public static PollsterMockData Instance
+        public static PollsterMockRepo Instance
         {
             get
             {
@@ -27,7 +27,7 @@ namespace demography.plugins.Repositories.Pollsters
                     {
                         if (instance == null)
                         {
-                            instance = new PollsterMockData();
+                            instance = new PollsterMockRepo();
                         }
                     }
                 }
@@ -57,7 +57,7 @@ namespace demography.plugins.Repositories.Pollsters
                 Pollsters.Add(p);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -71,7 +71,7 @@ namespace demography.plugins.Repositories.Pollsters
                 Pollsters.Remove(pToDelete);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }        }

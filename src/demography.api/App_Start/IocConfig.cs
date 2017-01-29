@@ -1,13 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using demography.plugins.contracts.Repositories;
-using demography.plugins.contracts.Repositories.Pollsters;
-using demography.plugins.Repositories.Pollsters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using demography.plugins.IocModules;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 
 namespace demography.api.App_Start
@@ -20,7 +14,7 @@ namespace demography.api.App_Start
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<PollsterMockData>().As<IRepository<PollsterDto>>().SingleInstance();
+            builder.RegisterModule(new RepositoryModule() { UseMockData = false });
 
             var container = builder.Build();
 
