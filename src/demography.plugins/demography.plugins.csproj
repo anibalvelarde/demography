@@ -41,6 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Pollsters\PollsterMockData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\demography.plugins.contracts\demography.plugins.contracts.csproj">
+      <Project>{b36c059a-886e-4c0b-b346-9c1e96aae3ad}</Project>
+      <Name>demography.plugins.contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

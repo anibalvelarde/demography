@@ -1,19 +1,20 @@
-﻿using System;
+﻿using demography.plugins.contracts.Repositories;
+using demography.plugins.contracts.Repositories.Pollsters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace demography.api.Models
+namespace demography.plugins.Repositories.Pollsters
 {
-    public class PollsterMockData
+    public class PollsterMockData : IRepository<PollsterDto>
     {
         private static volatile PollsterMockData instance;
         private static object syncRoot = new Object();
-        private readonly List<Pollster> _pollsters = new List<Pollster>();
+        private readonly List<PollsterDto> _pollsters = new List<PollsterDto>();
 
-        private PollsterMockData()
+        public PollsterMockData()
         {
-            _pollsters = new List<Pollster>() { new Pollster() { Name = "Anibal" }, new Pollster() { Name = "Lucas" } };
+            _pollsters = new List<PollsterDto>() { new PollsterDto() { Id = Guid.NewGuid(), Name = "Anibal" }, new PollsterDto() { Id = Guid.NewGuid(), Name = "Lucas" } };
         }
 
         public static PollsterMockData Instance
@@ -34,22 +35,22 @@ namespace demography.api.Models
             }
         }
 
-        private List<Pollster> Pollsters
+        private List<PollsterDto> Pollsters
         {
             get { return _pollsters; }
         }
 
-        public IEnumerable<Pollster> GetAllPollsters()
+        public IEnumerable<PollsterDto> GetAll()
         {
             return this.Pollsters;
         }
 
-        public Pollster GetPollster(Guid id)
+        public PollsterDto Get<Guid>(Guid id)
         {
             return Pollsters.FirstOrDefault(p => p.Id.Equals(id));
         }
 
-        public bool AddPollster(Pollster p)
+        public bool Add(PollsterDto p)
         {
             try
             {
@@ -62,7 +63,7 @@ namespace demography.api.Models
             }
         }
 
-        public bool DeletePollster(Guid id)
+        public bool Delete<Guid>(Guid id)
         {
             try
             {

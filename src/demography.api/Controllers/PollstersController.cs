@@ -1,5 +1,6 @@
 ﻿using demography.api.Models;
-using Newtonsoft.Json;
+using demography.plugins.contracts.Repositories;
+using demography.plugins.contracts.Repositories.Pollsters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,40 @@ namespace demography.api.Controllers
     /// </summary>
     public class PollstersController : ApiController
     {
+        private readonly IRepository<PollsterDto> _repository;
+
+        public PollstersController(IRepository<PollsterDto> repo)
+        {
+            _repository = repo;
+        }
+
+        private IRepository<PollsterDto> Repo { get { return _repository; } }
+
+
         /// <summary>
         /// HTTP GET ../api/pollsters/
         /// </summary>
         /// <returns>Gets a list of all Pollster resources</returns>
         public IEnumerable<Pollster> Get()
         {
-            return PollsterMockData.Instance.GetAllPollsters().OrderBy(p => p.Name);
+            return MakeListOfRealPollsters();
+        }
+
+        private IEnumerable<Pollster> MakeListOfRealPollsters()
+        {
+            var pollsters = new List<Pollster>();
+
+            foreach (var pollsterData in Repo.GetAll().OrderBy(p => p.Name))
+            {
+                pollsters.Add(MakeSingleRealPollster(pollsterData));
+            }
+
+            return pollsters;
+        }
+
+        private static Pollster MakeSingleRealPollster(PollsterDto pollsterData)
+        {
+            return new Pollster(pollsterData);
         }
 
         /// <summary>
@@ -30,11 +58,11 @@ namespace demography.api.Controllers
         {
             Pollster p = null;
 
-            foreach (var pollster in PollsterMockData.Instance.GetAllPollsters())
+            foreach (var pollsterData in Repo.GetAll())
             {
-                if (pollster.Id.Equals(id))
+                if (pollsterData.Id.Equals(id))
                 {
-                    p = pollster;
+                    p = new Pollster(pollsterData);
                 }
             }
 
@@ -49,14 +77,21 @@ namespace demography.api.Controllers
         {
             try
             {
-                var p = PollsterMockData.Instance.GetPollster(value.Id);
+                var p = Repo.Get(value.Id);
             }
             finally
             {
-                PollsterMockData.Instance.AddPollster(value);                
+                var newPollsterData = MakePollsterData(value);
+                Repo.Add(newPollsterData);
             }
             return value;
         }
+
+        private PollsterDto MakePollsterData(Pollster value)
+        {
+            return new PollsterDto() { Id = value.Id, Name = value.Name };
+        }
+
         /// <summary>
         /// HTTP PUT ..//api/pollsters/{id}/
         /// </summary>
@@ -66,17 +101,17 @@ namespace demography.api.Controllers
         {
             try
             {
-                var oldPollster = PollsterMockData.Instance.GetPollster(id);
-                PollsterMockData.Instance.DeletePollster(oldPollster.Id);
+                var oldPollster = MakeSingleRealPollster(Repo.Get(id));
+                Repo.Delete(oldPollster.Id);
                 var newPollster = oldPollster.Update(value);
-                PollsterMockData.Instance.AddPollster(newPollster);
+                Repo.Add(MakePollsterData(newPollster));
                 return newPollster;
             }
             finally
             {
                 // do nothing
             }
-            return PollsterMockData.Instance.GetPollster(value.Id);
+            return MakeSingleRealPollster(Repo.Get(value.Id));
         }
 
         /// <summary>
@@ -85,7 +120,7 @@ namespace demography.api.Controllers
         /// <param name="id">Identifier of the Pollster resource to be deleted</param>
         public string Delete(Guid id)
         {
-            if (PollsterMockData.Instance.DeletePollster(id))
+            if (Repo.Delete(id))
             {
                 return $"Deleted Id:[{id.ToString()}]";
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using demography.api.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,7 @@ namespace demography.api
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configure(IocConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
