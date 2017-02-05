@@ -29,7 +29,7 @@ namespace demography.plugins.IocModules
 
                 builder.RegisterType<PollsterRedisRepo>()
                        .As<IRepository<PollsterDto>>()
-                       .SingleInstance();
+                       .InstancePerRequest();
             }
         }
     }
